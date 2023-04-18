@@ -1,0 +1,31 @@
+<%- include ("../partials/header.ejs");%>  
+<main>
+
+    <h4>Welcome to Create</h4>
+    <form action="/add"  method="POST">
+        <div>
+            <label>Title</label>
+            <input type="text" placeholder=" Title here...." name="title" id="title"/>
+        </div>
+        <div>
+            <label>Genre</label>
+            <input type="text" placeholder=" Genre here...." name="genre" id="genre"/>
+        </div>
+        <div>
+            <label>Author</label>
+            <input type="text" placeholder=" Author here...." name="author" id="author"/>
+        </div>
+        <div>
+            <label>Pages</label>
+            <input type="text" placeholder="Pages here...." name="pages" id="pages"/>
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea name="description" id="description" placeholder=" Description here...." cols="20"></textarea>
+        </div>
+        <div>
+            <button type="submit" >SAVE</button>
+        </div>
+    </form>
+</main>   
+<%- include ("../partials/footer.ejs");%>  

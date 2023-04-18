@@ -1,0 +1,17 @@
+<html>
+  <%- include ("../partials/header.ejs");%>  
+<main>
+    <h4>Welcome to Bookstore</h4>
+    <% books.map(book => { %>
+      <article>
+        <h4>Title <%=book.title %></h4>
+        <p>Pages <%=book.pages %></p>
+        <p>Genre <%=book.genre %></p>
+        <a href="/details/<%=book.id %>"><button>Details</button></a>
+      </article>
+    <% }) %>
+
+
+
+</main>
+<%- include ("../partials/footer.ejs");%>  

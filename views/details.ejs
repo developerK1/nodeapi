@@ -1,0 +1,31 @@
+<html>
+<%- include ("../partials/header.ejs");%>  
+<main>
+
+        <article>
+          <h4>Title <%=book.title %></h4>
+          <p>Description <%=book.description %></p>
+          <p>Author <%=book.author %></p>
+          <p>Pages <%=book.pages %></p>
+          <p>Genre <%=book.genre %></p>
+          <a data-bkid="<%=book._id %>" id="trash"><button>Delete</button></a>
+        </article>
+
+</main>
+<script>
+    const delBtn = document.querySelector("#trash");
+
+    const trashOut = e => {
+        const routeApi = `/${delBtn.dataset.bkid}`;
+        
+        fetch(routeApi, {
+            method : "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => window.location = data.redirect )
+        .catch(err => console.log(err))
+    }
+
+    delBtn.addEventListener("click", trashOut);
+</script>
+<%- include ("../partials/footer.ejs");%>  
