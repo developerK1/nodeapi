@@ -20,7 +20,7 @@ const mongoLocal = 'mongodb://127.0.0.1:27017/cnm'
 mongoose.connect(mongoConect);
 const db = mongoose.connection;
 
-db.once('open', ()=> app.listen(port, ()=> console.log(`Server running on port ${port}`)))
+db.once('open', () => console.log("connection established.."))
 
 
 
@@ -67,7 +67,7 @@ app.delete('/:id',(req, res) => {
 
 
 
-
+app.listen(port, ()=> console.log(`Server running on port ${port}`))
 
 
 
