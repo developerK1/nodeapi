@@ -25,6 +25,12 @@ db.once('open', () => console.log("connection established.."))
 
 
 app.get("/", (req, res)=>{
+	
+	res.render('test', {title : "TESTING PAGE"})
+
+})
+
+app.get("/books", (req, res)=>{
 
 	Books.find()
     .then( books => res.render('home', {books,title : "HOME"}))
