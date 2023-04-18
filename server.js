@@ -12,7 +12,12 @@ app.use(express.urlencoded({extended:true}));
 
 const port = process.env.PORT || 4040;
 
-mongoose.connect('mongodb://127.0.0.1:27017/cnm');
+const mongoConect = "mongodb+srv://maobakg:pWResSro3qdalaGq@cluster0.uidjjph.mongodb.net/bookshelf";
+const mongoLocal = 'mongodb://127.0.0.1:27017/cnm'
+
+
+
+mongoose.connect(mongoConect);
 const db = mongoose.connection;
 
 db.once('open', ()=> app.listen(port, ()=> console.log(`Server running on port ${port}`)))
@@ -20,16 +25,11 @@ db.once('open', ()=> app.listen(port, ()=> console.log(`Server running on port $
 
 
 app.get("/", (req, res)=>{
+
+	Books.find()
+    .then( books => res.render('home', {books,title : "HOME"}))
+    .catch(err => res.status(400).json('Error: ' + err));
 	
-	const books = [
-		{title :"Title Retire yout retire rich" ,pages : 362 ,genre : " Finance"},
-		{title :"Title Smash Magazin" ,pages : 58 ,genre : "beauty"},
-		{title :"Making a millin bucks" ,pages : 322 ,genre : " Finance"},
-		{title :"The mern stack" ,pages : 522 ,genre : "software"},
-	]
-
-		res.render('home', {books,title : "HOME"})
-
 
 })
 
